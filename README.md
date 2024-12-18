@@ -27,7 +27,7 @@
 ```
 git clone https://github.com/khomut/FragrantWorldRepository.git
 ```
-3. Настройка базы данных
+2. Настройка базы данных
     - Убедитесь, что у вас установлен SQL Server Management Studio и СУБД Microsoft SQL Server.
     - Откройте SSMS и подключитесь к вашему серверу баз данных.
     - Создайте новую базу данных и запустите SQL скрипт(SQLQuary.sql) проекта для создания таблиц, заполнения их начальными данными.
@@ -38,7 +38,7 @@ __ВАЖНО__
 
 Впшите свою строку подключения к БД вместо строки "YOUR_CONNECTION_STRING" (FragrantWorldAPI - Contexts - FragrantWorldDbContext - метод OnConfiguring)
    
-5. Запустите проект, нажав кнопку "Start" или F5.
+4. Запустите проект, нажав кнопку "Start" или F5.
 
 __Пример работы приложения (Страница с товарами)__
 ![Picture](https://github.com/khomut/FragrantWorldRepository/blob/main/FragrantWorld/Images/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B.png)
