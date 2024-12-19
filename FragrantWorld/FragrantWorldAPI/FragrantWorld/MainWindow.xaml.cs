@@ -45,6 +45,8 @@ namespace FragrantWorld
         private async Task FilterProductsAsync()
         {
             await UpdateProductsAsync();
+            if (_products == null)
+                return;
             IEnumerable<Product> filteredProducts = _products;
             if (SearchProductTextBox.Text.Trim() != "")
                 filteredProducts = filteredProducts.Where(p => p.ProductName.ToLower()
@@ -53,9 +55,9 @@ namespace FragrantWorld
             if (manufacturer != "Все производители")
                 filteredProducts = filteredProducts.Where(p => p.ProductManufacturer == manufacturer);
             if (minCost != 0)
-                filteredProducts = filteredProducts.Where(p => p.ProductCost >= minCost);
+                filteredProducts = filteredProducts.Where(p => p.ProductCostWithDiscount  >= minCost);
             if (maxCost != 0)
-                filteredProducts = filteredProducts.Where(p => p.ProductCost <= maxCost);
+                filteredProducts = filteredProducts.Where(p => p.ProductCostWithDiscount <= maxCost);
             filteredProducts = SortCostComboBox.SelectedIndex == 0 ?
                 filteredProducts.OrderBy(p => p.ProductCost) :
                 filteredProducts.OrderByDescending(p => p.ProductCost);
@@ -66,6 +68,8 @@ namespace FragrantWorld
         private async Task UpdateManufacturers()
         {
             await UpdateProductsAsync();
+            if (_products == null)
+                return;
             var manufacturers = _products.Select(p => p.ProductManufacturer).Distinct().ToList();
             manufacturers.Insert(0, "Все производители");
             ManufacturerComboBox.ItemsSource = manufacturers;
@@ -76,9 +80,6 @@ namespace FragrantWorld
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await UpdateManufacturers();
-            var one = ManufacturerComboBox.SelectedItem.ToString();
-            var four = SortCostComboBox.SelectedItem.ToString();
-            Thread.Sleep(1500);
             await FilterProductsAsync();
         }
 
@@ -94,18 +95,14 @@ namespace FragrantWorld
 
         private async void MinCostTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (MinCostTextBox.Text.Trim() == "")
-                minCost = 0;
-            if (Decimal.TryParse(MinCostTextBox.Text, out minCost))
-                await FilterProductsAsync();
+            Decimal.TryParse(MinCostTextBox.Text, out minCost);
+            await FilterProductsAsync();
         }
 
         private async void MaxCostTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (MaxCostTextBox.Text.Trim() == "")
-                maxCost = 0;
-            if (Decimal.TryParse(MaxCostTextBox.Text, out maxCost))
-                await FilterProductsAsync();
+            Decimal.TryParse(MaxCostTextBox.Text, out maxCost);
+            await FilterProductsAsync();
         }
 
         private async void SearchProductTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -127,6 +124,12 @@ namespace FragrantWorld
         {
             var button = sender as Button;
             Product product = button.DataContext as Product;
+            if (product.ProductStatus == "Нет в наличии")
+            {
+                MessageBox.Show($"Товар распродан, дождитесь нового поступления", "Товара нет в наличии", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+                
+            }
             if (_order == null)
             {
                 _order = new() { OrderStatus = "Новый" };
@@ -134,14 +137,7 @@ namespace FragrantWorld
                 _order.OrderPickupPoint = pickupPoints.FirstOrDefault().PickupPointId;
                 _order.OrderDate = DateTime.Now;
                 _order.OrderDeliveryDate = DateTime.Now.AddDays(7);
-                try
-                {
-                    _order = await _orderService.AddOrderAsync(_order);
-                }
-                catch (HttpRequestException ex)
-                {
-                    MessageBox.Show($"Не удалось добавить заказ. Код ошибки - {(int)ex.StatusCode}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                _order = await _orderService.AddOrderAsync(_order);
             }
             try
             {
@@ -155,32 +151,18 @@ namespace FragrantWorld
                         ProductAmount = 1,
                         ProductArticleNumber = product.ProductArticleNumber
                     };
-                    try
-                    {
                         await _orderService.AddProductToOrderAsync(orderProduct);
-                    }
-                    catch (HttpRequestException ex)
-                    {
-                        MessageBox.Show($"Не удалось добавить взаимосвязь продукта с заказом. Код ошибки - {(int)ex.StatusCode}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
                 }
                 else
                 {
                     orderProduct.ProductAmount++;
-                    try
-                    { 
                     await _orderService.UpdateProductOrderAsync(orderProduct);
-                    }
-                    catch (HttpRequestException ex)
-                    {
-                        MessageBox.Show($"Не удалось изменить взаимосвязь продукта с заказом. Код ошибки - {(int)ex.StatusCode}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    ShowOrderButton.Visibility = Visibility.Visible;
                 }
+                ShowOrderButton.Visibility = Visibility.Visible;
             }
-            catch (HttpRequestException ex)
+            catch 
             {
-                MessageBox.Show($"Не удалось получить список взаимосвязанных товаров с продуктами. Код ошибки - {(int)ex.StatusCode}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Не удалось добавить товар в заказ", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
             

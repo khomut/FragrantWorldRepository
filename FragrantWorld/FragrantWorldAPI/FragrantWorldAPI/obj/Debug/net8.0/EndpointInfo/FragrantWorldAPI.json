@@ -342,17 +342,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Order"
+                "$ref": "#/components/schemas/OrderDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Order"
+                "$ref": "#/components/schemas/OrderDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Order"
+                "$ref": "#/components/schemas/OrderDto"
               }
             }
           }

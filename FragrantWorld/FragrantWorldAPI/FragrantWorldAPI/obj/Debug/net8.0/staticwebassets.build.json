@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "VoQkuTXDG38wXStRCN2uXyuErEZYd01KHPmvZJECPUQ=",
+  "Hash": "8YVdchkTcw5Ry7rjEYXBxx94qy5vbGYXeJwOL9n0Cx8=",
   "Source": "FragrantWorldAPI",
   "BasePath": "_content/FragrantWorldAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

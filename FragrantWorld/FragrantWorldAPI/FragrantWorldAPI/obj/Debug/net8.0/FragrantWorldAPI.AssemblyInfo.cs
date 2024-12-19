@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FragrantWorldAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58971e978ab77fe43643cf77c8ccd12c25836fff")]
 [assembly: System.Reflection.AssemblyProductAttribute("FragrantWorldAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FragrantWorldAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

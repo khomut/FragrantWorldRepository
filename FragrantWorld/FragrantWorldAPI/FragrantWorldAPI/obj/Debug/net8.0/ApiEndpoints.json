@@ -199,8 +199,8 @@
         "IsRequired": true
       },
       {
-        "Name": "order",
-        "Type": "FragrantWorldAPI.Models.Order",
+        "Name": "orderDto",
+        "Type": "FragrantWorldAPI.Models.OrderDto",
         "IsRequired": true
       }
     ],

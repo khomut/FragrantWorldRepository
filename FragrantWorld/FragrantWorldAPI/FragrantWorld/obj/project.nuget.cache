@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "deiIte1XoX0=",
+  "dgSpecHash": "cjCUMRQ74kY=",
   "success": true,
-  "projectFilePath": "C:\\Учёба\\FragrantWorld\\FragrantWorldAPI\\FragrantWorld\\FragrantWorld.csproj",
+  "projectFilePath": "C:\\FragrantWorldRepository\\FragrantWorld\\FragrantWorldAPI\\FragrantWorld\\FragrantWorld.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maxim\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\maxim\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512"

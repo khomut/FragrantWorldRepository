@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Учёба\\FragrantWorld\\FragrantWorldAPI\\FragrantWorldAPI\\FragrantWorldAPI.csproj": {}
+    "C:\\FragrantWorldRepository\\FragrantWorld\\FragrantWorldAPI\\FragrantWorldAPI\\FragrantWorldAPI.csproj": {}
   },
   "projects": {
-    "C:\\Учёба\\FragrantWorld\\FragrantWorldAPI\\FragrantWorldAPI\\FragrantWorldAPI.csproj": {
+    "C:\\FragrantWorldRepository\\FragrantWorld\\FragrantWorldAPI\\FragrantWorldAPI\\FragrantWorldAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Учёба\\FragrantWorld\\FragrantWorldAPI\\FragrantWorldAPI\\FragrantWorldAPI.csproj",
+        "projectUniqueName": "C:\\FragrantWorldRepository\\FragrantWorld\\FragrantWorldAPI\\FragrantWorldAPI\\FragrantWorldAPI.csproj",
         "projectName": "FragrantWorldAPI",
-        "projectPath": "C:\\Учёба\\FragrantWorld\\FragrantWorldAPI\\FragrantWorldAPI\\FragrantWorldAPI.csproj",
+        "projectPath": "C:\\FragrantWorldRepository\\FragrantWorld\\FragrantWorldAPI\\FragrantWorldAPI\\FragrantWorldAPI.csproj",
         "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-        "outputPath": "C:\\Учёба\\FragrantWorld\\FragrantWorldAPI\\FragrantWorldAPI\\obj\\",
+        "outputPath": "C:\\FragrantWorldRepository\\FragrantWorld\\FragrantWorldAPI\\FragrantWorldAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
